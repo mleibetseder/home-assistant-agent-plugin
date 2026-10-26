@@ -6,8 +6,7 @@ Rules for people and coding agents changing this repository: one Home Assistant 
 
 | Path | What it is |
 |---|---|
-| `agents/home-assistant-engineer.md` | The agent in Claude Code format (`name`, `description`). |
-| `opencode/agents/home-assistant-engineer.md` | The same agent in opencode format (`description`, `mode`, `permission`). **Same body** as the Claude Code file; only the frontmatter differs. |
+| `agents/home-assistant-engineer.md` | The agent: one file in opencode format (`name`, `description`, `mode`, `permission`). opencode uses all keys; Claude Code reads `name` and `description` and ignores the rest. |
 | `skills/<name>/SKILL.md` | Skills in the [Agent Skills](https://agentskills.io) format; `skills/<name>/agents/openai.yaml` holds Codex display metadata. |
 | `plugin.json`, `.claude-plugin/`, `.codex-plugin/`, `.agents/plugins/` | Plugin and marketplace manifests; name, version and description agree across them. |
 | `evals/` | `triggers.tsv` (trigger eval), `guardrails.tsv` (behaviour eval), `RESULTS.md`. |
@@ -32,7 +31,7 @@ Every change keeps these, in the agent and in every skill:
 
 ## Changing the agent
 
-Edit the body in both agent files the same way (the lint fails when they differ). Keep the opencode `permission` ask rules and the Claude Code settings example in the README in sync.
+There is one agent file, in opencode format with `name`; keep it that way (the lint requires `mode` and `permission`). Keep its `permission` ask rules and the Claude Code settings example in the README in sync.
 
 ## Evals
 

@@ -2,6 +2,11 @@
 
 All notable changes. Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/); versions follow [Semantic Versioning](https://semver.org).
 
+## [1.1.0] - 2026-10-26
+
+### Changed
+- One agent file in opencode format (with `name`) instead of a Claude Code and an opencode copy: opencode keeps its `permission` ask rules, Claude Code reads the same file. `opencode/agents/` is removed; opencode users copy `agents/home-assistant-engineer.md`.
+
 ## [1.0.0] - 2026-10-26
 
 ### Added

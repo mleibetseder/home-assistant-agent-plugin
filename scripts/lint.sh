@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Lints the skills and agents of this plugin: frontmatter, sizes, skill references, path
-# separators, and that the Claude Code and opencode agent files share one body.
+# separators, and that each agent is one opencode-format file that Claude Code can read too.
 # Prints one "file:line: message" per finding; exit 1 on any finding.
 set -euo pipefail
 
@@ -8,7 +8,7 @@ usage() {
   cat <<'USAGE'
 Usage: scripts/lint.sh [--root <repository>] [--help]
 
-Checks skills/*/SKILL.md, agents/*.md and opencode/agents/*.md.
+Checks skills/*/SKILL.md and agents/*.md.
 Exit 0 clean, 1 findings, 2 bad usage.
 USAGE
 }
@@ -32,7 +32,6 @@ field() {
     NR > 1 && index($0, key ": ") == 1 { v = substr($0, length(key) + 3); gsub(/^'\''|'\''$|^"|"$/, "", v); gsub(/'\'''\''/, "'\''", v); print v; exit }' "$1"
 }
 has_key() { awk -v key="$2" 'NR > 1 && $0 == "---" { exit } NR > 1 && index($0, key ":") == 1 { found = 1 } END { exit !found }' "$1"; }
-body() { awk 'NR == 1 && $0 == "---" { front = 1; next } front && $0 == "---" { front = 0; next } !front' "$1"; }
 
 shopt -s nullglob
 skills=(skills/*/SKILL.md)
@@ -59,12 +58,8 @@ for file in "${agents[@]}"; do
   id="$(basename "$file" .md)"
   [[ "$(field "$file" name)" == "$id" ]] || report "$file:2" "name differs from file name \"$id\""
   [[ -n "$(field "$file" description)" ]] || report "$file:1" "no description"
-  twin="opencode/agents/$id.md"
-  if [[ ! -f "$twin" ]]; then report "$file:1" "no opencode twin $twin"
-  else
-    [[ "$(field "$twin" description)" == "$(field "$file" description)" ]] || report "$twin:2" "description differs from $file"
-    diff -q <(body "$file") <(body "$twin") >/dev/null || report "$twin:1" "body differs from $file; edit both or regenerate"
-  fi
+  # One file for every tool: opencode reads mode and permission, Claude Code reads name and description.
+  for key in mode permission; do has_key "$file" "$key" || report "$file:1" "no \"$key\" (agents are in opencode format)"; done
 done
 
 while IFS= read -r file; do
@@ -73,7 +68,7 @@ while IFS= read -r file; do
     [[ -n "${known[${ref#*skills/}]:-}" ]] || report "$file:$line" "unknown skill \"skills/${ref#*skills/}\""
   done < <(grep -noE '(^|[^a-z/.-])skills/[a-z0-9][a-z0-9-]*' "$file" || true)
   while IFS=: read -r line _; do report "$file:$line" "backslash path; use /"; done < <(grep -nE '[A-Za-z>]\\[A-Za-z]' "$file" || true)
-done < <(find skills agents opencode -name '*.md' | sort)
+done < <(find skills agents -name '*.md' | sort)
 
 if ((findings)); then echo "lint: $findings finding(s)"; exit 1; fi
 echo "lint: ${#skills[@]} skills, ${#agents[@]} agents, all clean"

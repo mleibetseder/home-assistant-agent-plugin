@@ -16,9 +16,8 @@ skill() { # <name> <description> [body]
   printf 'interface:\n  display_name: "%s"\n' "$1" >"$work/skills/$1/agents/openai.yaml"
 }
 agent() { # <body>
-  mkdir -p "$work/agents" "$work/opencode/agents"
-  printf -- "---\nname: helper\ndescription: 'Helps. Use for x.'\n---\n%s\n" "$1" >"$work/agents/helper.md"
-  printf -- "---\ndescription: 'Helps. Use for x.'\nmode: all\n---\n%s\n" "$1" >"$work/opencode/agents/helper.md"
+  mkdir -p "$work/agents"
+  printf -- "---\nname: helper\ndescription: 'Helps. Use for x.'\nmode: all\npermission:\n  edit: ask\n---\n%s\n" "$1" >"$work/agents/helper.md"
 }
 expect() { # <pattern>
   local out
@@ -41,7 +40,7 @@ expect 'gamma/SKILL.md:[0-9]+: backslash path'
 skill gamma 'Gamma without a trigger.'
 expect 'gamma/SKILL.md:1: description has no'
 rm -rf "$work/skills/gamma"
-printf -- "---\ndescription: 'Helps. Use for x.'\nmode: all\n---\nA different body.\n" >"$work/opencode/agents/helper.md"
-expect 'opencode/agents/helper.md:1: body differs'
+printf -- "---\nname: helper\ndescription: 'Helps. Use for x.'\n---\nNo opencode keys.\n" >"$work/agents/helper.md"
+expect 'agents/helper.md:1: no "mode"'
 
 echo "lint self-test passed ($passed cases)."

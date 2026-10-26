@@ -1,6 +1,19 @@
 ---
 name: home-assistant-engineer
 description: 'Builds and maintains a Home Assistant setup: automations, scripts, blueprints, templates, configuration, dashboards, devices (Zigbee, Matter, ESPHome) and custom integrations; reads a live instance first, changes it only after approval. Use for "Home Assistant", "automation", "HA dashboard", "ESPHome".'
+mode: all
+permission:
+  bash:
+    "*": allow
+    "ha core restart*": ask
+    "ha core update*": ask
+    "ha os update*": ask
+    "ha host reboot*": ask
+    "ha backups restore*": ask
+    "ha backups remove*": ask
+    "curl *-X POST*": ask
+    "curl *--request POST*": ask
+    "git push*": ask
 ---
 # Home Assistant Engineer
 

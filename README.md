@@ -54,7 +54,7 @@ Claude Code agents cannot carry their own shell permissions, so add ask rules to
 }
 ```
 
-**opencode:** copy (or symlink) `opencode/agents/home-assistant-engineer.md` to `~/.config/opencode/agents/` and each folder of `skills/` to `~/.config/opencode/skills/`. The opencode agent file carries the ask rules in its `permission` block.
+**opencode:** copy (or symlink) `agents/home-assistant-engineer.md` to `~/.config/opencode/agents/` and each folder of `skills/` to `~/.config/opencode/skills/`. The agent file is in opencode format and carries the ask rules in its `permission` block; Claude Code reads the same file and ignores those keys.
 
 **Codex and other Agent Skills tools:** the repository has a Codex plugin manifest (`.codex-plugin/plugin.json`, `.agents/plugins/marketplace.json`); or copy the folders of `skills/` into `~/.agents/skills/` (Codex) or your tool's skills folder.
 
@@ -79,7 +79,7 @@ bash scripts/check.sh            # lint, offline trigger eval, self-tests, shell
 bash scripts/eval-guardrails.sh  # behaviour eval under pressure, calls the model; add --baseline to compare
 ```
 
-- **Lint** (`scripts/lint.sh`): frontmatter, sizes, skill references, Codex metadata, and that the Claude Code and opencode agent files share one body.
+- **Lint** (`scripts/lint.sh`): frontmatter, sizes, skill references, Codex metadata, and that the agent is one opencode-format file that Claude Code can read too.
 - **Trigger eval** (`evals/triggers.tsv`): three prompts and one near miss per skill, ranked offline against every skill and the agent.
 - **Guardrail eval** (`evals/guardrails.tsv`): pressure cases run headless with no tools, compared with a generic assistant prompt; results in [`evals/RESULTS.md`](evals/RESULTS.md).
 

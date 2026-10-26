@@ -1,6 +1,6 @@
 {
   "name": "home-assistant",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Home Assistant Engineer agent and seven skills for automations, scripts, blueprints, templates, configuration, dashboards, devices (Zigbee, Matter, ESPHome) and custom integrations; reads a live instance first, changes it only after approval.",
   "author": {
     "name": "Manuel Leibetseder"
