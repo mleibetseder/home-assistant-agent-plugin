@@ -1,0 +1,5 @@
+interface:
+  display_name: "HA Devices"
+  short_description: "Local-first device choice: Zigbee, Matter and Thread, ESPHome with encrypted API and OTA"
+policy:
+  allow_implicit_invocation: true

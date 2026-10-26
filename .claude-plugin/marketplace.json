@@ -1,0 +1,14 @@
+{
+  "name": "home-assistant-agent-plugin",
+  "owner": {
+    "name": "Manuel Leibetseder"
+  },
+  "description": "Home Assistant agent and skills.",
+  "plugins": [
+    {
+      "name": "home-assistant",
+      "source": "./",
+      "description": "A Home Assistant Engineer agent and seven skills for automations, scripts, blueprints, templates, configuration, dashboards, devices (Zigbee, Matter, ESPHome) and custom integrations; reads a live instance first, changes it only after approval."
+    }
+  ]
+}

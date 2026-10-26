@@ -1,0 +1,5 @@
+interface:
+  display_name: "HA Live Instance"
+  short_description: "Read a live Home Assistant safely: version, real entity IDs and actions; change only after approval"
+policy:
+  allow_implicit_invocation: true

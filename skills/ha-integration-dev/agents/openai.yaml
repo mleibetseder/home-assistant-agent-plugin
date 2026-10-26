@@ -1,0 +1,5 @@
+interface:
+  display_name: "HA Integration Dev"
+  short_description: "Custom integrations: config flow, coordinator, entities, quality scale, tests, HACS"
+policy:
+  allow_implicit_invocation: true

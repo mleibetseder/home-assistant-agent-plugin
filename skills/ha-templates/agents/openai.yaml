@@ -1,0 +1,5 @@
+interface:
+  display_name: "HA Templates"
+  short_description: "Jinja templates and modern template entities with safe defaults and availability"
+policy:
+  allow_implicit_invocation: true

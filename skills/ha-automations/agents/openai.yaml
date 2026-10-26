@@ -1,0 +1,5 @@
+interface:
+  display_name: "HA Automations"
+  short_description: "Automations, scripts and blueprints in the syntax of the user's Home Assistant version, debugged with traces"
+policy:
+  allow_implicit_invocation: true

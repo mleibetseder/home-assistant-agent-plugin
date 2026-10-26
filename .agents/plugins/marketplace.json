@@ -1,0 +1,20 @@
+{
+  "name": "home-assistant-agent-plugin",
+  "interface": {
+    "displayName": "Home Assistant agent plugin"
+  },
+  "plugins": [
+    {
+      "name": "home-assistant",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

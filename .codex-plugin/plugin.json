@@ -1,0 +1,26 @@
+{
+  "name": "home-assistant",
+  "version": "1.0.0",
+  "description": "A Home Assistant Engineer agent and seven skills for automations, scripts, blueprints, templates, configuration, dashboards, devices (Zigbee, Matter, ESPHome) and custom integrations; reads a live instance first, changes it only after approval.",
+  "author": {
+    "name": "Manuel Leibetseder"
+  },
+  "homepage": "https://github.com/mleibetseder/home-assistant-agent-plugin",
+  "repository": "https://github.com/mleibetseder/home-assistant-agent-plugin",
+  "license": "MIT",
+  "keywords": [
+    "home-assistant",
+    "smart-home"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Home Assistant",
+    "shortDescription": "Build and maintain a Home Assistant setup safely.",
+    "developerName": "Manuel Leibetseder",
+    "category": "Productivity",
+    "capabilities": [
+      "Read",
+      "Write"
+    ]
+  }
+}

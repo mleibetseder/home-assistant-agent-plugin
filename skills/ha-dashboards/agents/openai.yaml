@@ -1,0 +1,5 @@
+interface:
+  display_name: "HA Dashboards"
+  short_description: "Sections-view dashboards with tile cards, visibility conditions, phone and tablet layouts"
+policy:
+  allow_implicit_invocation: true

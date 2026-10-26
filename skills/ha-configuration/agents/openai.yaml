@@ -1,0 +1,5 @@
+interface:
+  display_name: "HA Configuration"
+  short_description: "Safe configuration changes: backup, edit, check, reload; packages, secrets, recorder, updates"
+policy:
+  allow_implicit_invocation: true

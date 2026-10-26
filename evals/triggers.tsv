@@ -1,0 +1,30 @@
+# skill	expect	prompt
+# expect "+": the skill or agent must rank in the top 3 for the prompt; "-": a near miss, it must not rank first.
+ha-live-instance	+	which entities do I have in Home Assistant
+ha-live-instance	+	check my Home Assistant version and states over the API
+ha-live-instance	+	call the light turn on action on my Home Assistant instance
+ha-live-instance	-	write an automation that turns on the porch light at sunset
+ha-automations	+	write an automation that turns on the porch light at sunset
+ha-automations	+	my Home Assistant automation does not fire, check the trace
+ha-automations	+	make a blueprint for motion lights
+ha-automations	-	template sensor for total house power
+ha-templates	+	template sensor for total house power
+ha-templates	+	Jinja in Home Assistant gives float got invalid input unavailable
+ha-templates	+	convert my legacy platform template sensors
+ha-templates	-	edit configuration.yaml to add packages
+ha-configuration	+	edit configuration.yaml to add packages
+ha-configuration	+	update Home Assistant to the new release safely
+ha-configuration	+	the Home Assistant database is too big, recorder settings
+ha-configuration	-	build a dashboard for the kitchen tablet
+ha-dashboards	+	build a dashboard for the kitchen tablet
+ha-dashboards	+	Lovelace sections view with tile cards
+ha-dashboards	+	HA card that only shows when someone is home
+ha-dashboards	-	pair a new Zigbee motion sensor
+ha-devices	+	pair a new Zigbee motion sensor
+ha-devices	+	ESPHome config for an ESP32 temperature sensor
+ha-devices	+	Matter pairing fails with my Thread device
+ha-devices	-	write a custom component for my inverter cloud API
+ha-integration-dev	+	write a custom component for my inverter cloud API
+ha-integration-dev	+	config flow and DataUpdateCoordinator for a HACS integration
+ha-integration-dev	+	Home Assistant custom integration tests with pytest
+ha-integration-dev	-	which entities do I have in Home Assistant
